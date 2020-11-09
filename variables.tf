@@ -1,6 +1,6 @@
 variable "project_id" {
   description = "Project Id"
-  type = string
+  type        = string
 }
 
 variable "bucket_name" {
@@ -15,6 +15,6 @@ variable "topic_name" {
 
 variable "event_type" {
   description = "The events that trigger a notification to be sent."
-  type    = string
-  default = "OBJECT_FINALIZE"
+  type        = string
+  default     = "OBJECT_FINALIZE"
 }
