@@ -20,3 +20,18 @@ OBJECT_DELETE - an object has been successfully deleted.
 | bucket_name | Source bucket name on which pubsub notification is configured | `String` | n/a | yes|
 | topic_name | The topic in Pub/Sub that receives notifications. |  `String` | n/a | yes|
 | event_type | Event type e.g. OBJECT_FINALIZE, OBJECT_DELETE, OBJECT_ARCHIVE | `String` | OBJECT_FINALIZE | yes
+
+## example
+```hcl
+resource "google_project_service" "pubsub_api" {
+  project = var.project_id
+  service = "pubsub.googleapis.com"
+}
+
+module "gcs-pubsub" {
+  source      = "https://github.com/vikramshinde12/terraform-google-storage-pubsub.git?ref=master"
+  topic_name  = "sample_topic"
+  bucket_name = "sample_bucket"
+  depends_on  = [google_project_service.pubsub_api]
+}
+```
