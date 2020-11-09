@@ -13,7 +13,7 @@ OBJECT_FINALIZE (default) - New object is successfully created in the bucket.
 OBJECT_DELETE - an object has been successfully deleted.
 4. Subscriber: Sample pull subscriber named "echo".
 
-# Sample example
+## Sample example
 ```hcl
 module "gcs-pubsub" {
   source      = "https://github.com/vikramshinde12/terraform-google-storage-pubsub.git?ref=master"
@@ -28,7 +28,19 @@ resource "google_project_service" "pubsub_api" {
 }
 ```
 
-# Inputs
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | ~> 0.13 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| google | ~> 3.44 |
+
+## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
