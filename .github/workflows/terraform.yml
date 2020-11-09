@@ -1,10 +1,17 @@
 name: 'Terraform GitHub Actions'
 on:
   - pull_request
+  - push:
+      branches:
+        - main
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: './tests'
     steps:
     # Checkout the repository to the GitHub Actions runner
       - name: 'Checkout'
@@ -19,10 +26,6 @@ jobs:
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
         run: terraform init
-        with:
-          tf_actions_version: 0.12.13
-          tf_actions_comment: true
-          tf_actions_working_dir: './tests'
 
       # Checks that all Terraform configuration files adhere to a canonical format
       - name: Terraform Format
@@ -31,7 +34,3 @@ jobs:
       # Generates an execution plan for Terraform
       - name: Terraform Plan
         run: terraform plan
-        with:
-          tf_actions_version: 0.12.13
-          tf_actions_comment: true
-          tf_actions_working_dir: './tests'
