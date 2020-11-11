@@ -5,7 +5,7 @@ provider "google" {
 }
 
 module "gcs-pubsub" {
-  source      = "vikramshinde12/storage-pubsub/google"
+  source      = "../../"
   version     = 1.0.1
   topic_name  = "sample_topic"
   bucket_name = "sample_bucket"
