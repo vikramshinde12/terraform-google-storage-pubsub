@@ -6,7 +6,6 @@ provider "google" {
 
 module "gcs-pubsub" {
   source      = "../../"
-  version     = 1.0.1
   topic_name  = "sample_topic"
   bucket_name = "sample_bucket"
   project_id  = "sample_project_id"
