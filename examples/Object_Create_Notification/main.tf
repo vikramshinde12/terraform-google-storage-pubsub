@@ -4,15 +4,18 @@ provider "google" {
   region      = var.region
 }
 
+module "gcs-pubsub" {
+  source      = "vikramshinde12/storage-pubsub/google"
+  version     = 1.0.1
+  topic_name  = "sample_topic"
+  bucket_name = "sample_bucket"
+  project_id  = "sample_project_id"
+  depends_on  = [google_project_service.pubsub_api]
+}
+
+
 resource "google_project_service" "pubsub_api" {
   project = var.project_id
   service = "pubsub.googleapis.com"
-}
-
-module "gcs-pubsub" {
-  source      = "https://github.com/vikramshinde12/terraform-google-storage-pubsub.git?ref=master"
-  topic_name  = "sample_topic"
-  bucket_name = "sample_bucket"
-  depends_on  = [google_project_service.pubsub_api]
 }
 
